@@ -62,7 +62,7 @@ class Weather{
             weather_id = json["weather"][0]["id"].stringValue
             weather_main = json["weather"][0]["main"].stringValue
             weather_icon = json["weather"][0]["icon"].stringValue
-            description_weather = json["weather"]["description"].stringValue
+            description_weather = json["weather"][0]["description"].stringValue
             cloud = json["clouds"]["all"].stringValue
             wind_degree = json["wind"]["speed"].stringValue
             wind_speed = json["wind"]["deg"].stringValue
@@ -93,36 +93,29 @@ class Weather{
             print("Invalid filename");
         }
     }
-//    func setPlace_Weather()
-//    {
-//        info_weather = ""
-//        info_weather += " Counry: " + information_weather.country
-//        info_weather += "\n City: " + information_weather.name_city
-//        info_weather += "\n ID: " + information_weather.id
-//        info_weather += "\n Population: " + information_weather.population
-//
-//    }
-//    func initialize()
-//    {
-////        if(count >= array_weather.count)
-////        {
-////            count = 0;
-////            date = dateFormatter.date(from: array_weather[0].date);
-////        }
-//        setPlace_Weather()
-//        info_weather += "\n Weather: " + array_weather[count].weather
-//        info_weather += "\n Description of weather: " + array_weather[count].description_weather
-//        info_weather += "\n Temperature: " + String(format: "%.1f", array_weather[count].temp - 273.15) + " C"
-//        info_weather += "\n Maximum temperature: " + String(format: "%.1f", array_weather[count].temp_max - 273.15) + " C"
-//        info_weather += "\n Minimum temperature: " + String(format: "%.1f", array_weather[count].temp_min - 273.15) + " C"
-//        info_weather += "\n Ground of Level: " + String(format: "%.1f", array_weather[count].ground_level - 273.15)
-//        info_weather += "\n Sea level: " + String(format: "%.1f", array_weather[count].sea_level - 273.15)
-//        info_weather += "\n Info of Rain: " + array_weather[count].rain
-//        info_weather += "\n Wind: {degree: " + array_weather[count].wind_degree
-//        info_weather += ", speed: " + array_weather[count].wind_speed + "}\n"
-////        if(count < array_weather.count)
-////        {
-////            count += 1
-////        }
-//    }
+    func getData(index: Int) -> String{
+        var data: String = ""
+        data = ""
+        data += " Country: " + weather.country
+        data += "\n City: " + weather.name_city
+        data += "\n ID: " + weather.id
+        data += "\n Population: " + weather.population
+        data += "\n Time: " + weather.list[index].date
+        data += "\n DT: " + weather.list[index].dt
+        data += "\n Weather_id: " + weather.list[index].weather_id
+        data += "\n Weather: " + weather.list[index].weather_main
+        data += "\n Description of weather: " + weather.list[index].description_weather
+        data += "\n Temperature: " + String(format: "%.1f", weather.list[index].temp - 273.15) + " C"
+        data += "\n Maximum temperature: " + String(format: "%.1f", weather.list[index].temp_max - 273.15) + " C"
+        data += "\n Minimum temperature: " + String(format: "%.1f", weather.list[index].temp_min - 273.15) + " C"
+        data += "\n Humidity: " + weather.list[index].humidity
+        data += "\n Temp_KF: " + weather.list[index].temp_kf
+        data += "\n Pressure: " + weather.list[index].pressure
+        data += "\n Ground of Level: " + weather.list[index].ground_level
+        data += "\n Sea level: " + weather.list[index].sea_level
+        data += "\n Info of Rain: " + weather.list[index].rain
+        data += "\n Wind: {degree: " + weather.list[index].wind_degree
+        data += ", speed: " + weather.list[index].wind_speed + "}\n"
+        return data
+    }
 }
